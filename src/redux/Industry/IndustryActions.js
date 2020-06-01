@@ -9,7 +9,7 @@ export const fetchIndustry = () => {
   return (dispatch) => {
     dispatch(fetchIndustryRequest())
     axios
-      .get('http://abkumbhar.pythonanywhere.com/industry/')
+      .get('https://abkumbhar.pythonanywhere.com/industry/')
     // .get('http://127.0.0.1:8000/industry/')
       .then(response => {
         // response.data is the users

@@ -9,7 +9,7 @@ export const fetchEquipment = () => {
   return (dispatch) => {
     dispatch(fetchEquipmentRequest())
     axios
-      .get('http://abkumbhar.pythonanywhere.com/equipment/')
+      .get('https://abkumbhar.pythonanywhere.com/equipment/')
     // .get('http://127.0.0.1:8000/equipment/')
       .then(response => {
         // response.data is the users
