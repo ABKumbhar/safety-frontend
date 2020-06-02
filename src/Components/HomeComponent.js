@@ -2,17 +2,27 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {fetchIndustry} from '../redux'
 import 'bootstrap/dist/css/bootstrap.css';
 import {connect,useDispatch,useSelector} from 'react-redux';
-import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
+import { Form,Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
 import CardComponent from './CardComponent'
 
 function HomeComponent({IndustryData,fetchIndustry}) {
   //const [isOpen, setisOpen] = useState(false) 
+  const [search, setSearch] = useState("");
+  const [filteredIndustries, setFilteredIndustries] = useState([]);
+
   useEffect(() => {
     fetchIndustry()
   },[])
  
 
-  
+  useEffect(() => {
+    setFilteredIndustries(
+      IndustryData.industry.filter(ind =>
+        ind.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, IndustryData]);
+
     return IndustryData.loading ? (
  <div>
  <Spinner>
@@ -23,9 +33,17 @@ function HomeComponent({IndustryData,fetchIndustry}) {
     ) : (
       <div>
         <h2 style = {{textAlign:"center"}}>Industry List</h2>
-        <div>
-          {
-            IndustryData.industry.map(ind => 
+        <div style={{textAlign : "center"}}>
+        
+        <input 
+        type="text"
+        placeholder="Search Industries"
+        onChange={e => setSearch(e.target.value)}/>
+        
+          {     
+      
+
+            filteredIndustries.map(ind => 
           //  <Row>
           //   <Col xl="4" lg="6">
           //   </Col>

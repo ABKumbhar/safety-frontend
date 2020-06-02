@@ -6,11 +6,21 @@ import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from '
 import CardComponent from './CardComponent'
 
 function EquipmentComponent({EquipmentData,fetchEquipment}) {
+  const [filteredEquipments, setFilteredEquipments] = useState([]);
+  const [search, setSearch] = useState("");
+
   const [isOpen, setisOpen] = useState(false) 
   useEffect(() => {
     fetchEquipment()
   },[])
  
+  useEffect(() => {
+    setFilteredEquipments(
+      EquipmentData.equipment.filter(ind =>
+        ind.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, EquipmentData]);
 
 
     return EquipmentData.loading ? (
@@ -20,11 +30,16 @@ function EquipmentComponent({EquipmentData,fetchEquipment}) {
       ) : EquipmentData.error ? (
       <h2>{EquipmentData.error}</h2>
     ) : (
-      <div>
+      <div style = {{textAlign:"center"}}>
         <h2 style = {{textAlign:"center"}}>Equipment List</h2>
         <div>
+        <input 
+        type="text"
+        placeholder="Search Equipments"
+        onChange={e => setSearch(e.target.value)}/>
+
           {
-            EquipmentData.equipment.map(ind => 
+            filteredEquipments.map(ind => 
           //  <Row>
           //   <Col xl="4" lg="6">
           //   </Col>
