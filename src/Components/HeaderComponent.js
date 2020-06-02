@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap'
+import NavbarComponent from './NavbarComponent'
 
 import { Jumbotron } from 'reactstrap'
 
@@ -12,7 +13,7 @@ function HeaderComponent() {
             <h1> Process safety App </h1>
                 <br />
             <span className="fa fa-home fa-lg">  Information about startup, shutdowm and maintenance availaible at the touch of your screen for free!</span>
-
+        <NavbarComponent/>
         </Jumbotron>
 
     </div>);
