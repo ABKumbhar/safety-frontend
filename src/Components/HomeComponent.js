@@ -12,7 +12,7 @@ function HomeComponent({IndustryData,fetchIndustry}) {
 
   useEffect(() => {
     fetchIndustry()
-  },[IndustryData])
+  },[])
  
 
   useEffect(() => {
