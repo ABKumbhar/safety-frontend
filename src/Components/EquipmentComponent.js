@@ -11,7 +11,7 @@ function EquipmentComponent({EquipmentData,fetchEquipment}) {
   const [isOpen, setisOpen] = useState(false) 
   useEffect(() => {
     fetchEquipment()
-  },[EquipmentData])
+  },[])
  
   useEffect(() => {
     setFilteredEquipments(
