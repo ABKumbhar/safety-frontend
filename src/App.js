@@ -23,7 +23,7 @@ function App() {
           <HeaderComponent />
           <BrowserRouter>
           <Switch>
-            <Route path='safety-frontend/industry' component={HomeComponent}/>
+            <Route path='/industry' component={HomeComponent}/>
             <Route path='safety-frontend/equipment' component={EquipmentComponent}/>
           </Switch>
           
