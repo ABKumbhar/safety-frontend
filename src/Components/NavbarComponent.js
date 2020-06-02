@@ -24,7 +24,7 @@ function NavbarComponent() {const [isOpen, setIsOpen] = useState(false);
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-            <NavLink  href="/industry">
+            <NavLink  href="safety-frontend/industry">
               <span> Industry </span>
           </NavLink>
             </NavItem>
