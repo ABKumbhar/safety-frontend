@@ -1,8 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {fetchEquipment} from '../redux'
-import 'bootstrap/dist/css/bootstrap.css';
-import {connect,useDispatch,useSelector} from 'react-redux';
-import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
+import {connect} from 'react-redux';
+import { Button, Card, CardBody, CardText, CardTitle,Spinner } from 'reactstrap';
 import CardComponent from './CardComponent'
 
 function EquipmentComponent({EquipmentData,fetchEquipment}) {
@@ -12,7 +11,7 @@ function EquipmentComponent({EquipmentData,fetchEquipment}) {
   const [isOpen, setisOpen] = useState(false) 
   useEffect(() => {
     fetchEquipment()
-  },[])
+  },[EquipmentData])
  
   useEffect(() => {
     setFilteredEquipments(
