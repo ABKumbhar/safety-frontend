@@ -1,111 +1,43 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {fetchIndustry} from '../redux'
-import 'bootstrap/dist/css/bootstrap.css';
-import {connect,useDispatch,useSelector} from 'react-redux';
-import { Form,Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
+import React,{useState,useEffect} from 'react'
+import {Input,Form,Button} from 'reactstrap'
 import CardComponent from './CardComponent'
+import axios from 'axios'
+function HomeComponent() {
+    const [query,setQuery]=useState("helo")
+    const [item,setItem] = useState([])
+    const [queryi,setQueryi]=useState("")
+    useEffect(() => {
+        axios
+        .get(`https://abkumbhar.pythonanywhere.com/list?search=${query}`)
+        .then((res)=> 
+           {console.log(res)
+        setItem(res.data)}
+            
+        )
+        .catch((error)=>
+        {console.log(error.message)
+        
+        }
+        )
 
-function HomeComponent({IndustryData,fetchIndustry}) {
-  //const [isOpen, setisOpen] = useState(false) 
-  const [search, setSearch] = useState("");
-  const [filteredIndustries, setFilteredIndustries] = useState([]);
-
-  useEffect(() => {
-    fetchIndustry()
-  },[])
+     ;
+      }, [query]);
  
 
-  useEffect(() => {
-    setFilteredIndustries(
-      IndustryData.industry.filter(ind =>
-        ind.name.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search, IndustryData]);
-
-    return IndustryData.loading ? (
- <div>
- <Spinner>
- </Spinner>
-</div>
-      ) : IndustryData.error ? (
-      <h2>{IndustryData.error}</h2>
-    ) : (
-      <div>
-        <h2 style = {{textAlign:"center"}}>Industry List</h2>
-        <div style={{textAlign : "center"}}>
+    return (
+        <div>
+        <Form >
+        <Input type="search" placeholder="search here ..." name="search" onChange={e => setQueryi(e.target.value)}/>
+        <Button onClick={e => setQuery(queryi)}>Submit</Button>
         
-        <input 
-        type="text"
-        placeholder="Search Industries"
-        onChange={e => setSearch(e.target.value)}/>
-        
-          {     
-      
-
-            filteredIndustries.map(ind => 
-          //  <Row>
-          //   <Col xl="4" lg="6">
-          //   </Col>
-          //   <Col xl="4" lg="6">
-          //   <Card className="mb-5" e-card-horizontal	>
-          //   <CardBody>
-          //     <CardTitle className="card-title font-weight-bold font-size-lg">{ind.name}</CardTitle>
-          //     <CardText>
-          //       {ind.adinfo}
-          //     </CardText>
-          //     </CardBody>
-          //     <Button onClick= {handleClick}>
-          //       More ...
-          //     </Button>
-              
-          //     <CardText>
-          //       <div>
-          //   {
-          //     isOpen ? (
-          //       <div>
-          //       {
-          //       ind.questioni.map((q) => 
-          //       <div>
-          //       <b>{q.question}</b>
-          //       <br/>
-          //       {q.answer}
-          //       </div>
-          //       )} </div>
-          //       ) : (<div></div> )
-                
-          //   }</div>
-          //      </CardText>
-              
-              
-              
-          //   </Card >
-          //   </Col>
-          //   <Col xl="4" lg="6">
-          //   </Col>
-          //   </Row>
-          <li key={ind.id}>
-          <CardComponent ind = {ind}/>
-          </li>
-            )}
+        </Form>
+       <div>
+           {item.length ? item.map(i =>
+           <li key={i.id}><CardComponent ind={i}/></li>
+           ) : (<div style={{textAlign:"center"}}>Search box is empty or result not found</div>)}
+       </div>
         </div>
-      </div>
     )
-        
 }
 
-const mapStateToProps = state => {
-    return {
-      IndustryData: state.industries
-    }
-  }
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-      fetchIndustry: () => dispatch(fetchIndustry())
-    }
-  }
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(HomeComponent)
+export default HomeComponent

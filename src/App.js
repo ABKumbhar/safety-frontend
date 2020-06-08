@@ -2,10 +2,11 @@ import React, { Fragment, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import HeaderComponent from './Components/HeaderComponent';
-import HomeComponent from './Components/HomeComponent';
+import IndustryComponent from './Components/IndustryComponent';
 import NavbarComponent from './Components/NavbarComponent'
-import { BrowserRouter, Switch, Route, Redirect, withRouter } from 'react-router-dom';
-
+import {HashRouter as Router, BrowserRouter, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import HomeComponent from './Components/HomeComponent'
 import {Provider} from 'react-redux'
 import {store} from './redux/store'
 
@@ -18,16 +19,17 @@ function App() {
   return (
   
     <Fragment>
-
+       <HeaderComponent/> 
       <div>
-          <HeaderComponent />
-          <BrowserRouter>
+          
+          <Router >
           <Switch>
-            <Route path='/industry' component={HomeComponent}/>
-            <Route path='safety-frontend/equipment' component={EquipmentComponent}/>
+               <Route exact path="/" component={HomeComponent}/>  
+            <Route path='/industry' component={IndustryComponent}/>
+            <Route path='/equipment' component={EquipmentComponent}/>
           </Switch>
           
-            </BrowserRouter>
+            </Router>
      </div>
      </Fragment>
 

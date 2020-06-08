@@ -1,46 +1,49 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {fetchEquipment} from '../redux'
-import {connect} from 'react-redux';
-import { Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
+import {fetchIndustry} from '../redux'
+import 'bootstrap/dist/css/bootstrap.css';
+import {connect,useDispatch,useSelector} from 'react-redux';
+import { Form,Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
 import CardComponent from './CardComponent'
 
-function EquipmentComponent({EquipmentData,fetchEquipment}) {
-  const [filteredEquipments, setFilteredEquipments] = useState([]);
+function IndustryComponent({IndustryData,fetchIndustry}) {
+  //const [isOpen, setisOpen] = useState(false) 
   const [search, setSearch] = useState("");
+  const [filteredIndustries, setFilteredIndustries] = useState([]);
 
-  const [isOpen, setisOpen] = useState(false) 
   useEffect(() => {
-    fetchEquipment()
+    fetchIndustry()
   },[])
  
+
   useEffect(() => {
-    setFilteredEquipments(
-      EquipmentData.equipment.filter(ind =>
+    setFilteredIndustries(
+      IndustryData.industry.filter(ind =>
         ind.name.toLowerCase().includes(search.toLowerCase())
       )
     );
-  }, [search, EquipmentData]);
+  }, [search, IndustryData]);
 
-
-    return EquipmentData.loading ? (
-<Spinner >
-
-</Spinner>
-      ) : EquipmentData.error ? (
-      <h2>{EquipmentData.error}</h2>
+    return IndustryData.loading ? (
+ <div>
+ <Spinner>
+ </Spinner>
+</div>
+      ) : IndustryData.error ? (
+      <h2>{IndustryData.error}</h2>
     ) : (
-      <div >
-        <h2 style = {{textAlign:"center"}}>Equipment List</h2>
-        <div>
-          <div style={{textAlign:"center"}}>
+      <div>
+        <h2 style = {{textAlign:"center"}}>Industry List</h2>
+        <div >
+        <div style={{textAlign:"center"}}>
         <input 
         type="text"
-        placeholder="Search Equipments"
+        placeholder="Search Industries"
         onChange={e => setSearch(e.target.value)}/>
-      </div>
+        </div>
+          {     
+      
 
-          {
-            filteredEquipments.map(ind => 
+            filteredIndustries.map(ind => 
           //  <Row>
           //   <Col xl="4" lg="6">
           //   </Col>
@@ -93,16 +96,16 @@ function EquipmentComponent({EquipmentData,fetchEquipment}) {
 
 const mapStateToProps = state => {
     return {
-      EquipmentData: state.equipments
+      IndustryData: state.industries
     }
   }
   
   const mapDispatchToProps = dispatch => {
     return {
-      fetchEquipment: () => dispatch(fetchEquipment())
+      fetchIndustry: () => dispatch(fetchIndustry())
     }
   }
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(EquipmentComponent)
+  )(IndustryComponent)
