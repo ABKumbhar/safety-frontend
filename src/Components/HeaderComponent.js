@@ -15,7 +15,7 @@ function HeaderComponent() {
                 <div className="form">
                 </div>
             <br />
-            <span className="fa fa-home fa-lg">  Information about startup, shutdowm and maintenance availaible at the touch of your screen for free!</span>
+            <span className="fa fa-home fa-lg">  Information about startup, shutdown and maintenance availaible at the touch of your screen for free!</span>
         <NavbarComponent/>
 
         </Jumbotron>
