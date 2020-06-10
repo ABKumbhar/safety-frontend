@@ -22,7 +22,7 @@ function CardComponent(props) {
               <CardText>
                 {props.ind.adinfo}
                 <br/>
-                {props.ind.url ? <a href={props.ind.url} target="_blank"> OSHA reference URL </a> : <div></div>}
+                {props.ind.url ? <a href={props.ind.url} target=" "> OSHA reference URL </a> : <div></div>}
               </CardText>
               </CardBody>
               <Button onClick= {handleClick}>
