@@ -21,6 +21,8 @@ function CardComponent(props) {
               <CardTitle className="card-title font-weight-bold font-size-lg">{props.ind.name}</CardTitle>
               <CardText>
                 {props.ind.adinfo}
+                <br/>
+                {props.ind.url ? <a href={props.ind.url} target="_blank"> OSHA reference URL </a> : <div></div>}
               </CardText>
               </CardBody>
               <Button onClick= {handleClick}>
