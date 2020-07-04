@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
+import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner, CardFooter } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from 'react-router-dom';
 
@@ -21,19 +21,21 @@ function CardComponent(props) {
 
             <Card className="mb-5" outline color="info">
             <CardBody>
-              <CardTitle className="card-title font-weight-bold font-size-lg">{props.ind.name}</CardTitle>
+              <CardTitle className="card-title font-weight-bold font-size-lg">Industry/Equipment Name : {props.ind.name}</CardTitle>
               <CardText>
                 <br/>
-    Data taken from (i.e. reference) :  {props.ind.url ? <a href={props.ind.url} target=" ">  <b> {props.ind.adinfo} </b> </a> : <div></div>}
+               
+               Data taken from (i.e. reference) :  {props.ind.url ? <a href={props.ind.url} target=" ">  <b> {props.ind.adinfo} (Click to visit reference) </b> </a> : <div></div>}
               </CardText>
               </CardBody>
-
+               <CardFooter>
+              For more information, click on following link to know more information
               <Button color="success" onClick= {handleClick}>
                 
               <Link to ={{pathname:'/detail',indi : props.ind }}>
-               <div style={{color:"white"}}>More ...</div></Link>
+               <div style={{color:"white"}}>Click to know more ...</div></Link>
               </Button>
-              
+              </CardFooter>
 
               
               

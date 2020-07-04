@@ -15,9 +15,9 @@ import {
     DropdownItem,
     NavbarText
   } from 'reactstrap';
-function NavbarComponent() {const [isOpen, setIsOpen] = useState(false);
+function NavbarComponent() {const [isOpen, setIsOpen] = useState(true);
 
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => setIsOpen(isOpen);
     return (
         <div>
         <Navbar color="light" light expand="md">

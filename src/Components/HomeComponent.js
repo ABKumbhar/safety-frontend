@@ -92,8 +92,8 @@ function HomeComponent() {
     
         </Form>
        <div>
-           {item.length ? item.map(i =>
-           <li key={i.id}><CardComponent ind={i}/></li>
+           {item.length ?  item.map(i => 
+           <li key={i.id}>Searched results ... <CardComponent ind={i}/></li>
            ) : (<div >Search box is empty or result not found</div>)}
        </div>
          <Jumbotron >
