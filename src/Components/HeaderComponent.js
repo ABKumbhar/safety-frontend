@@ -9,16 +9,16 @@ function HeaderComponent() {
     return (
     <div className="Header" style={{textAlign:"center"}} >
 
-        <Jumbotron >
+        <Jumbotron style={{backgroundColor: "Orange"}}>
 
-            <h1> Process safety App </h1>
+            <h1> Process safety App</h1>
             <Image src={industry} roundedCircle fluid style={{textAlign:"center"}}/>
 
                 <br />
                 <div className="form">
                 </div>
             <br />
-            <span className="fa fa-home fa-lg">  Information about startup, shutdown and maintenance availaible at the touch of your screen for free!</span>
+            <span className="fa fa-home fa-lg" style={{color:"white"}}> <h2> Information about startup, shutdown and maintenance availaible at the touch of your screen for free! </h2></span>
 
         <NavbarComponent/>
 

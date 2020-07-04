@@ -19,16 +19,16 @@ function CardComponent(props) {
             </Col>
             <Col xl="4" lg="6">
 
-            <Card className="mb-5">
+            <Card className="mb-5" outline color="info">
             <CardBody>
               <CardTitle className="card-title font-weight-bold font-size-lg">{props.ind.name}</CardTitle>
               <CardText>
                 <br/>
-    {props.ind.url ? <a href={props.ind.url} target=" "> {props.ind.adinfo} reference URL </a> : <div></div>}
+    Data taken from (i.e. reference) :  {props.ind.url ? <a href={props.ind.url} target=" ">  <b> {props.ind.adinfo} </b> </a> : <div></div>}
               </CardText>
               </CardBody>
 
-              <Button onClick= {handleClick}>
+              <Button color="success" onClick= {handleClick}>
                 
               <Link to ={{pathname:'/detail',indi : props.ind }}>
                <div style={{color:"white"}}>More ...</div></Link>

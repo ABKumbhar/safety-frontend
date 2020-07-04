@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import {Input,Form,Button,Jumbotron} from 'reactstrap'
+import {Input,Form,Button,Jumbotron, FormGroup} from 'reactstrap'
 import CardComponent from './CardComponent'
 import axios from 'axios'
+import { FiSearch } from 'react-icons/fi';
+
 function HomeComponent() {
     const [query,setQuery]=useState("helo")
     const [item,setItem] = useState([])
@@ -79,22 +81,22 @@ function HomeComponent() {
 
     return (
         <div>
-        <Form >
+        <Form inline>
         <Input list="searching" placeholder="search here ..." id="search" onChange={e => setQueryi(e.target.value)}/>
         <datalist id="searching">
             {query && industrysearch.map((i)=>{
             return(<option value={i.name}/>)}
             )}
         </datalist>
-        <Button onClick={e => setQuery(queryi)}>Submit</Button>
+        <Button type="submit" color="danger" onClick={e => setQuery(queryi)}>Submit <FiSearch/></Button>
     
         </Form>
        <div>
            {item.length ? item.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
-           ) : (<div style={{textAlign:"center"}}>Search box is empty or result not found</div>)}
+           ) : (<div >Search box is empty or result not found</div>)}
        </div>
-         <Jumbotron>
+         <Jumbotron >
              <h1>Trending Today ....</h1>
              <br/>
              <h4>Updates on new information on industry safety</h4>
@@ -102,9 +104,7 @@ function HomeComponent() {
            <li key={i.id}><CardComponent ind={i}/></li>
            ) : (<div style={{textAlign:"center"}}>Nothing to new show today</div>)}
            
-         </Jumbotron>
 
-         <Jumbotron>
          <br/>
             <h4> Updates on new information on equipment safety </h4>
 

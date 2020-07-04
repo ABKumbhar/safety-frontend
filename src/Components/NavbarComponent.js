@@ -1,4 +1,6 @@
 import React,{useState} from 'react'
+import { FaIndustry } from 'react-icons/fa';
+
 import {
     Collapse,
     Navbar,
@@ -19,7 +21,7 @@ function NavbarComponent() {const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
         <Navbar color="light" light expand="md">
-        <NavbarBrand ></NavbarBrand>
+        <NavbarBrand > Navigate here <FaIndustry/></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
