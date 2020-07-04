@@ -6,8 +6,14 @@ function DetailComponent(props) {
         <div>
             <Card>
                 <CardBody>
+                    <h3>
                 {props.location.indi.name}
+                </h3>
+                <br/>
+                <h4>Reference URL (click next): <a href={props.location.indi.url} target=" "> {props.location.indi.adinfo} </a></h4>
+
                 </CardBody>
+
                 <CardText>
 
                 <table className="table table-hover">

@@ -2,20 +2,24 @@ import React,{useState,useEffect} from 'react'
 import { Card, CardBody, CardImg, CardText, CardTitle, Form, Input, Button } from 'reactstrap'
 import NavbarComponent from './NavbarComponent'
 import axios from 'axios'
-import { Jumbotron } from 'reactstrap'
-
+import { Jumbotron,Media } from 'reactstrap'
+import {Image} from 'react-bootstrap'
+import industry from './industry.jpeg'
 function HeaderComponent() {
     return (
-    <div className="Header">
-              
+    <div className="Header" style={{textAlign:"center"}} >
 
-        <Jumbotron>
+        <Jumbotron >
+
             <h1> Process safety App </h1>
+            <Image src={industry} roundedCircle style={{textAlign:"center"}}/>
+
                 <br />
                 <div className="form">
                 </div>
             <br />
             <span className="fa fa-home fa-lg">  Information about startup, shutdown and maintenance availaible at the touch of your screen for free!</span>
+
         <NavbarComponent/>
 
         </Jumbotron>
