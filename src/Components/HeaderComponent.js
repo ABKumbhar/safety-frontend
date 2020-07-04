@@ -12,7 +12,7 @@ function HeaderComponent() {
         <Jumbotron >
 
             <h1> Process safety App </h1>
-            <Image src={industry} roundedCircle style={{textAlign:"center"}}/>
+            <Image src={industry} roundedCircle fluid style={{textAlign:"center"}}/>
 
                 <br />
                 <div className="form">
