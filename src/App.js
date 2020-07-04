@@ -10,7 +10,7 @@ import HomeComponent from './Components/HomeComponent'
 import {Provider} from 'react-redux'
 import {store} from './redux/store'
 import DetailComponent from './Components/DetailComponent'
-
+import Footer from './Components/Footer'
 import 'bootstrap/dist/css/bootstrap.css';
 
 import EquipmentComponent from './Components/EquipmentComponent'
@@ -34,6 +34,8 @@ function App() {
           
             </Router>
      </div>
+     <Footer/>
+
      </Fragment>
 
   );
