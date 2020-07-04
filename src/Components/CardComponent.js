@@ -2,27 +2,31 @@ import React from 'react'
 import {useState} from 'react'
 import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import {Link} from 'react-router-dom';
 
 function CardComponent(props) {
     const [isOpen, setisOpen] = useState(false) 
     const handleClick = () => {
         setisOpen(!isOpen)
-        
+
         }
       
     return (
         <div>
+          <Link to ={{pathname:'/detail',indi : props.ind }}>
+
             <Row>
             <Col xl="4" lg="6">
             </Col>
             <Col xl="4" lg="6">
+
             <Card className="mb-5">
             <CardBody>
               <CardTitle className="card-title font-weight-bold font-size-lg">{props.ind.name}</CardTitle>
               <CardText>
                 {props.ind.adinfo}
                 <br/>
-                {props.ind.url ? <a href={props.ind.url} target=" "> OSHA reference URL </a> : <div></div>}
+    {props.ind.url ? <a href={props.ind.url} target=" "> {props.ind.adinfo} reference URL </a> : <div></div>}
               </CardText>
               </CardBody>
               <Button onClick= {handleClick}>
@@ -90,7 +94,7 @@ function CardComponent(props) {
             <Col xl="4" lg="6">
             </Col>
             </Row>
-           
+           </Link>
         </div>
     )
 }

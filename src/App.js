@@ -9,6 +9,7 @@ import createHistory from 'history/createBrowserHistory';
 import HomeComponent from './Components/HomeComponent'
 import {Provider} from 'react-redux'
 import {store} from './redux/store'
+import DetailComponent from './Components/DetailComponent'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -27,6 +28,8 @@ function App() {
                <Route exact path="/" component={HomeComponent}/>  
             <Route path='/industry' component={IndustryComponent}/>
             <Route path='/equipment' component={EquipmentComponent}/>
+            <Route path='/detail' component={DetailComponent}/>
+
           </Switch>
           
             </Router>
