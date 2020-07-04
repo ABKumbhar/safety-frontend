@@ -7,6 +7,7 @@ function HomeComponent() {
     const [item,setItem] = useState([])
     const [queryi,setQueryi]=useState("")
     const [industry,setIndustry] = useState([])
+    const [industrysearch,setIndustrysearch] = useState([])
     const [equipment,setEquipment] = useState([])
     useEffect(() => {
         axios
@@ -59,13 +60,34 @@ function HomeComponent() {
      ;
       }, []);
  
+      useEffect(() => {
+        axios
+        .get(`https://abkumbhar.pythonanywhere.com/industry`)
+        .then((res)=> 
+           {console.log(res)
+        setIndustrysearch(res.data)}
+            
+        )
+        .catch((error)=>
+        {console.log(error.message)
+        
+        }
+        )
+
+     ;
+      }, []);
 
     return (
         <div>
         <Form >
-        <Input type="search" placeholder="search here ..." name="search" onChange={e => setQueryi(e.target.value)}/>
+        <Input list="searching" placeholder="search here ..." id="search" onChange={e => setQueryi(e.target.value)}/>
+        <datalist id="searching">
+            {query && industrysearch.map((i)=>{
+            return(<option value={i.name}/>)}
+            )}
+        </datalist>
         <Button onClick={e => setQuery(queryi)}>Submit</Button>
-        
+    
         </Form>
        <div>
            {item.length ? item.map(i =>
