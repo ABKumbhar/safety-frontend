@@ -1,17 +1,28 @@
-import React, { useEffect } from 'react'
+import React,{useEffect,useState} from 'react'
+import axios from 'axios'
 import { CardText,Card, CardBody } from 'reactstrap'
-
+import {useParams} from 'react-router-dom'
 function DetailComponent(props) {
-    
+    let slug = useParams()
+    const [question, setquestion] = useState([])
+    useEffect(() => {
+        axios
+        .get(`https://abkumbhar.pythonanywhere.com/industry/${slug}/question/`)
+        .then((res)=> {
+            setquestion(res.data)
+        })
+        
+    }, [])
+
     return (
         <div>
+            
             <Card>
                 <CardBody>
                     <h3>
-                {props.location.indi.name}
+                {props.location.indi ? <div>props.location.indi             <br/>    <h4>Reference URL (click next): <a href={props.location.indi.url} target=" "> {props.location.indi.adinfo} </a></h4> </div>: <div>Industry questions</div> }
                 </h3>
                 <br/>
-                <h4>Reference URL (click next): <a href={props.location.indi.url} target=" "> {props.location.indi.adinfo} </a></h4>
 
                 </CardBody>
 
@@ -24,7 +35,7 @@ function DetailComponent(props) {
                     <tbody>
                     <tr>
                     
-                             {props.location.indi.questioni &&
+                             {
                     props.location.indi.questioni.map((q) => 
                     
                     <div>
