@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CardText,Card, CardBody } from 'reactstrap'
 
 function DetailComponent(props) {
+    
     return (
         <div>
             <Card>

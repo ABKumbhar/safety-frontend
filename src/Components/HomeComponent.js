@@ -11,6 +11,7 @@ function HomeComponent() {
     const [industry,setIndustry] = useState([])
     const [industrysearch,setIndustrysearch] = useState([])
     const [equipment,setEquipment] = useState([])
+     const [count, setcount] = useState(0)
     useEffect(() => {
         axios
         .get(`https://abkumbhar.pythonanywhere.com/list?search=${query}`)
@@ -82,13 +83,13 @@ function HomeComponent() {
     return (
         <div>
         <Form inline>
-        <Input list="searching" placeholder="search here ..." id="search" onChange={e => setQueryi(e.target.value)}/>
+        <Input list="searching" placeholder="search here ..." onChange={e => setQueryi(e.target.value)}/>
         <datalist id="searching">
             {query && industrysearch.map((i)=>{
             return(<option value={i.name}/>)}
             )}
         </datalist>
-        <Button type="submit" color="danger" onClick={e => setQuery(queryi)}>Submit <FiSearch/></Button>
+        <Button color="danger" onClick={e => setQuery(queryi)}>Submit <FiSearch/></Button>
     
         </Form>
        <div>
